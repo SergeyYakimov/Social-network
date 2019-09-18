@@ -16,8 +16,8 @@ const App = (props) => {
         <div className="app-wrapper-content">
           {/*<Route path="/messages" component={Dialogs} />
           <Route path="/profile" component={Profile} />*/}
-          <Route path="/messages" render={() => <DialogsContainer store={props.store}  />}/>
-          <Route path="/profile" render={() => <Profile store={props.store} />}/>
+          <Route path="/messages" render={() => <DialogsContainer />}/>
+          <Route path="/profile" render={() => <Profile />}/>
         </div>
       </div> 
   );
