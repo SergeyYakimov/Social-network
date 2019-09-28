@@ -1,10 +1,8 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import {NavLink} from 'react-router-dom';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem.jsx';
 import Message from './Message/Message.jsx';
-import {sendMessageCreator, updateNewMessageBodyCreator} from './../../Redux/dialogs-reducer.js';
 
 const Dialogs = (props) => {
 	let state = props.dialogsPage;
