@@ -4,6 +4,8 @@ import Users from './Users.js';
 import {setCurrentPage,  
 	toggleFollowingProgress, getUsers, follow, unfollow} from './../../Redux/users-reducer.js';
 import Preloader from './../common/Preloader/Preloader.js';
+import {compose} from 'redux';
+import {withAuthRedirect} from './../../hoc/withAuthRedirect.js';
 
 
 
@@ -55,10 +57,10 @@ let mapStateToProps = (state) => {
 		isFetching: state.usersPage.isFetching,
 		followinginProgress: state.usersPage.followinginProgress
 	}
-}
+};
 
-export default connect(mapStateToProps, {	
+export default compose(withAuthRedirect,connect(mapStateToProps, {	
 		setCurrentPage,
 		toggleFollowingProgress,
 		getUsers, follow, unfollow
-	})(UsersContainer)
+	}))(UsersContainer)
