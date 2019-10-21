@@ -5,6 +5,7 @@ import {required} from './../../utils/validators/validators.js';
 import {connect} from 'react-redux';
 import {login} from './../../Redux/auth-reducer.js';
 import {Redirect} from 'react-router-dom';
+import style from './../../components/common/FormControls/FormControls.module.css';
 
 const LoginForm = (props) => {
 	return (
@@ -22,6 +23,8 @@ const LoginForm = (props) => {
 			<div>
 				<Field type={"checkbox"} name={"rememberMe"} component={Input}/>remember me
 			</div>
+			{props.error && <div className={style.summaryError}>{props.error}
+			</div>}
 			<div>
 				<button>Login</button>
 			</div>
