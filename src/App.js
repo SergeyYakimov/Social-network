@@ -1,8 +1,7 @@
 import React from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
-import {Route} from 'react-router-dom';
+import {withRouter, Route} from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 import ProfileContainer from './components/Profile/ProfileContainer.js';
