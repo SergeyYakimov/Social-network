@@ -1,7 +1,8 @@
 import React from 'react';
+import store from './Redux/redux-store.js';
+import {Provider, connect} from 'react-redux'; 
 import {compose} from 'redux';
-import {connect} from 'react-redux';
-import {withRouter, Route} from 'react-router-dom';
+import {withRouter, Route, BrowserRouter} from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 import ProfileContainer from './components/Profile/ProfileContainer.js';
@@ -43,5 +44,14 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 });
 
-export default compose(withRouter,connect(mapStateToProps, {initializeApp}))(App);
+let AppContainer = compose(withRouter,connect(mapStateToProps, {initializeApp}))(App);
 
+const MainApp = (props) => {
+  return <BrowserRouter>
+    <Provider store={store} >
+      <AppContainer />
+    </Provider>
+    </BrowserRouter>
+}
+
+export default MainApp;
