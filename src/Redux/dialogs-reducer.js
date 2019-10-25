@@ -3,11 +3,11 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 let initialState = {
 	messages: [
 		{id: 1, message: "Hi!"},
-		{id: 2, message: "Yo, dude!"},
-		{id: 3, message: "Motherfucker yo!!!"}
+		{id: 2, message: "Hello!"},
+		{id: 3, message: "Good day!"}
 	],
 	dialogs: [
-		{id: 1, name: "Dimych"},
+		{id: 1, name: "Dima"},
 		{id: 2, name: "Andrey"},
 		{id: 3, name: "Sveta"},
 		{id: 4, name: "Sasha"},
