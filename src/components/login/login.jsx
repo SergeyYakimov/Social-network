@@ -10,18 +10,25 @@ import {createField} from './../common/FormControls/FormControls.js';
 
 const LoginForm = ({handleSubmit, error}) => {
 	return (
-		<form onSubmit={handleSubmit}>
-			
-			{createField("Email", "email", [required], Input)}
-			{createField("Password", "password", [required], Input, {type: "password"})}	
-			{createField(null, "rememberMe", [], Input, {type: "checkbox"}, "remember me")}
-			
-			{error && <div className={style.summaryError}>{error}
-			</div>}
+		<div>
+			<form onSubmit={handleSubmit}>
+				
+				{createField("Email", "email", [required], Input)}
+				{createField("Password", "password", [required], Input, {type: "password"})}	
+				{createField(null, "rememberMe", [], Input, {type: "checkbox"}, "remember me")}
+				
+				{error && <div className={style.summaryError}>{error}
+				</div>}
+				<div>
+					<button>Login</button>
+				</div>
+			</form>
 			<div>
-				<button>Login</button>
+				<h2>Данные тестового аккаунта</h2>
+				<p>Email: free@samuraijs.com</p>
+				<p>Password: free</p>
 			</div>
-		</form>	
+		</div>	
 	)
 }
 

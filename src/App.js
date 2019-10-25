@@ -2,7 +2,7 @@ import React from 'react';
 import store from './Redux/redux-store.js';
 import {Provider, connect} from 'react-redux'; 
 import {compose} from 'redux';
-import {withRouter, Route, BrowserRouter} from 'react-router-dom';
+import {withRouter, Route, HashRouter} from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 import UsersContainer from './components/Users/UsersContainer.js';
@@ -49,11 +49,11 @@ const mapStateToProps = (state) => ({
 let AppContainer = compose(withRouter,connect(mapStateToProps, {initializeApp}))(App);
 
 const MainApp = (props) => {
-  return <BrowserRouter>
+  return <HashRouter>
     <Provider store={store} >
       <AppContainer />
     </Provider>
-    </BrowserRouter>
+    </HashRouter>
 }
 
 export default MainApp;
