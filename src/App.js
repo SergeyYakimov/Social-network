@@ -2,7 +2,7 @@ import React from 'react';
 import store from './Redux/redux-store.js';
 import {Provider, connect} from 'react-redux'; 
 import {compose} from 'redux';
-import {withRouter, Route, HashRouter} from 'react-router-dom';
+import {withRouter, Route, HashRouter, Switch, Redirect} from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 import UsersContainer from './components/Users/UsersContainer.js';
@@ -17,8 +17,17 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 
 class App extends React.Component {
 
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert("Some error occured");
+  }
+
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
 
   render() {
@@ -32,10 +41,16 @@ class App extends React.Component {
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route path="/messages" render={withSuspense(DialogsContainer)}/>
-          <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
-          <Route path="/users" render={() => <UsersContainer />}/>
-          <Route path="/login" render={() => <LoginPage />}/>
+          <Switch>
+            <Route exact path="/">
+              <Redirect from="/" to="/profile" />
+            </Route> 
+            <Route path="/messages" render={withSuspense(DialogsContainer)}/>
+            <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
+            <Route path="/users" render={() => <UsersContainer />}/>
+            <Route path="/login" render={() => <LoginPage />}/>
+            <Route path="*" render={() => <div>404 NOT FOUND</div>}/>
+          </Switch>
         </div>
       </div> 
     )
